@@ -1,5 +1,5 @@
 var taskList = [];
-var ul=document.getElementById('todoList');
+var todoList=document.getElementById('todoList');
 
 function addList() {
     var task = document.getElementById('todoInput').value;
@@ -9,17 +9,17 @@ function addList() {
     else{
         taskList.push(task);
         for(let i=0; i<taskList.length; i++) {
-            var li = document.createElement('li');
-            li.appendChild(document.createTextNode(taskList[i]));
+            var newTask = document.createElement('li');
+            newTask.appendChild(document.createTextNode(taskList[i]));
 
             var imgDelete = document.createElement('img');
             imgDelete.src = './images/img.jpeg';
             imgDelete.height = '42';
             imgDelete.width = '42';
             imgDelete.addEventListener("click",deleteTask);
-            li.appendChild(imgDelete);
+            newTask.appendChild(imgDelete);
         }
-        ul.appendChild(li);
+        todoList.appendChild(newTask);
     }
     document.getElementById('todoForm').reset();
 }
@@ -27,17 +27,17 @@ function addList() {
 function searchList() {
     var taskSearch = document.getElementById('todoSearch');
     var filter = taskSearch.value.toUpperCase();
-    var li=ul.getElementsByTagName('li');
-    for(let i=0; i<li.length; i++) {
-        if (li[i].innerText.toUpperCase().indexOf(filter) > -1) {
-                li[i].style.display = "";
+    var newSearch=todoList.getElementsByTagName('li');
+    for(let i=0; i<newSearch.length; i++) {
+        if (newSearch[i].innerText.toUpperCase().indexOf(filter) > -1) {
+                newSearch[i].style.display = "";
         } else {
-                li[i].style.display = "none";
+                newSearch[i].style.display = "none";
         }
     }
 }
 
 function deleteTask() {
-    var li = this.parentNode;
-    ul.removeChild(li);
+    var newDelete = this.parentNode;
+    todoList.removeChild(newDelete);
 }

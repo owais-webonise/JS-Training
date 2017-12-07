@@ -9,6 +9,14 @@ class Add extends React.Component {
       this._addList = this._addList.bind(this);
   }
 
+  componentWillUpdate() {
+    console.log("Received");
+  }
+
+  componentDidUpdate() {
+    console.log("After update");
+  }
+
   componentWillReceiveProps(newProps) {
     if(this.props.items !== newProps.items) {
       this.setState({

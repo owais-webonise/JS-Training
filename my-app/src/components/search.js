@@ -10,11 +10,23 @@ class Search extends React.Component {
     this._searchList = this._searchList.bind(this);
   }
 
+  componentDidUpdate() {
+    console.log("updated");
+  }
+
   componentWillReceiveProps(newProps) {
     this.setState({
       items:newProps.items,
       searchitems: newProps.searchitems
     });
+  }
+
+  componentWillMount() {
+    console.log("Starting");
+  }
+
+  componentDidMount() {
+    console.log("After Mounting");
   }
 
   _searchList(e) {

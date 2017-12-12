@@ -61,7 +61,8 @@ module.exports = {
   ],
   resolve: {
     alias: {
-        config$: path.join(rootPath, 'config', process.env.NODE_ENV)
+        config$: path.join(rootPath, 'config', process.env.NODE_ENV),
+        home: path.resolve(__dirname,'src/js/modules/prelogin/')
     },
     extensions: ['.js', '.json', '.css']
   },

@@ -1,6 +1,7 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import * as components from './components/components.js';
-import {addTodo, displayTodo, searchTodo, searchEmpty} from './actions';
+import { addTodo, displayTodo, searchTodo, searchEmpty } from './actions';
+import { store } from './route'
 
 export const TodoList = connect(
   function mapStateToProps(state) {
@@ -18,5 +19,3 @@ export const TodoList = connect(
     };
   }
 )(components.TodoList);
-
-

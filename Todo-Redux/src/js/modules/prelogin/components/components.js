@@ -1,11 +1,22 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router';
+import { store } from '../route'
 
-export function Todo(props) {
-  const {todo} = props;
-  if(todo.status) {
-    return <strike>{todo.text}</strike>
-  } else {
-    return <span>{todo.text}</span>
+export default class Todo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data : props.todo.text,
+      id : props.todo.id
+    }
+  }
+  render() {
+    return(
+      <Link to={"home/"+this.state.id} className="field">
+        <span>Id: {this.state.id}</span>
+        <span> Text: {this.state.data}</span>
+      </Link>
+    )
   }
 }
 
@@ -15,10 +26,9 @@ export function TodoList(props) {
   const onSubmit = (event) => {
     const input = event.target;
     const text = input.value;
+    const id = input.id;
     const isEnterKey = (event.which == 13);
-    const isLongEnough = text.length > 0;
-
-    if(isEnterKey && isLongEnough) {
+    if(isEnterKey) {
       input.value = '';
       addTodo(text);
     }
@@ -26,42 +36,35 @@ export function TodoList(props) {
 
   const onSearch = (event) => {
     const inputSearch = event.target;
-    const textSearch= inputSearch.value;
-    if (textSearch.length == 0) {
+    const textSearch = inputSearch.value;
+    if (!textSearch.length) {
       searchEmpty();
     }
-
-    const isLongEnoughSearch = textSearch.length > 0;
-
-    if(isLongEnoughSearch) {
-      searchTodo(textSearch);
-    }
+    searchTodo(textSearch);
   }
 
   const toggleClick = id => event => displayTodo(id);
 
   return (
-    <div className='todo'>
-      <input type='text'
-        placeholder='Add Task'
-        onKeyDown={onSubmit} />
-      <input type='text'
-        placeholder='Search Task'
-        onChange={onSearch} />
-      <ul className='todo_list'>
+    <div className = 'todo'>
+      <input type = 'text'
+        placeholder = 'Add Task'
+        onKeyDown = {onSubmit} />
+      <input type = 'text'
+        placeholder = 'Search Task'
+        onChange = {onSearch} />
+      <ul className = 'todo_list'>
         {props.todos.map(t => (
-          <li key={t.id}
-            className='todo_items'
-            onClick={toggleClick(t.id)}>
-            <Todo todo={t} />
+          <li key = {t.id}
+            className ='todo_items'>
+            <Todo todo = {t} />
           </li>
           ))}
       </ul>
-
-      <ul className='updatedtodo_items'>
+      <ul className = 'updatedtodo_items'>
         {props.updatedTodos.map(i => (
-          <li key={i.id}>
-          <Todo todo={i} />
+          <li key = {i.id}>
+          <Todo todo = {i} />
           </li>
           ))}
       </ul>

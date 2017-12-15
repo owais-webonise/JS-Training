@@ -1,0 +1,12 @@
+body {
+    background: #95d6a0;
+}
+
+.failColor {
+  color: red
+}
+
+.field {
+  text-decoration: none;
+  color: #000;
+}

@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {checkboxEnum, ResultType} from './constants.js';
 
 var checkValue = [];
-var uncheckValue = [];
 class Checkbox extends React.Component {
   constructor(props) {
     super(props);
@@ -41,17 +40,15 @@ class Checkbox extends React.Component {
         _.map(ResultType, (item, key) => {
           return (
             <div key={key} className="pull-left">
-            <input type = "checkbox" onChange = {this._changecheck.bind(this,item)} id={item}/>
-            <label for={item}>{item}</label>
-          </div>
-            )
+              <input type = "checkbox" onChange = {this._changecheck.bind(this,item)} id={item}/>
+              <label for={item}>{item}</label>
+            </div>
+          )
         })
-
       }
       </div>
     );
   }
-
 };
 
 export default Checkbox;

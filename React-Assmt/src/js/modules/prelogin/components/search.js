@@ -10,12 +10,12 @@ class Search extends React.Component {
     this._searchList = this._searchList.bind(this);
   }
 
-  /*componentWillReceiveProps(newProps) {
+  componentWillReceiveProps(newProps) {
     this.setState({
       allResults:newProps.allResults,
       searchResults: newProps.searchResults
     });
-  }*/
+  }
 
   _searchList(event) {
     var updatedResults = Object.assign([],this.state.allResults);

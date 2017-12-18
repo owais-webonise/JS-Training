@@ -41,10 +41,14 @@ class StudentApp extends Component {
   }
 
   checkMe(incomingcheckValue) {
+    // var newValue ;
+    // newValue = incomingcheckValue;
+    // if (newValue !== incomingcheckValue)
     this.setState({
       allResults: incomingcheckValue
     })
   }
+
   render() {
     return (
       <div>
@@ -55,10 +59,14 @@ class StudentApp extends Component {
           <Checkbox allResults={this.state.allResults}
           handleCheck={this.checkMe.bind(this)} />
         </form>
+        <table className="table">
+        <tr>
         <th> First Name </th>
         <th> Last Name </th>
         <th> Percentage </th>
+        </tr>
           {this._generateTable()}
+        </table>
       </div>
     );
   }

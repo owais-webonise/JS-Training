@@ -21,6 +21,11 @@ module.exports = {
     filename: '[name].js',
     publicPath: '/'
   },
+  devServer: {
+    hot: true,
+    inline: true,
+    open:true
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/html/index.tpl.html',
